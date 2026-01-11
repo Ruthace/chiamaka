@@ -1,1137 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiamaka Okakpu - Data Analyst</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Chiamaka Ruth Okakpu | Portfolio</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        .mobile-menu {
-            display: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 300px 1fr;
-            gap: 2rem;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .profile-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease 0.4s both;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .hero-stats {
-            text-align: right;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffd700;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ffd700);
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.8s both;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            background: white;
-            margin: 40px 0;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #ffd700;
-        }
-
-        .skill-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            opacity: 0.9;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .project-header h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-date {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .tech-tag {
-            background: #f0f0f0;
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-link {
-            display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .project-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            margin: 2rem 0;
-        }
-
-        .timeline-item {
-            background: white;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #667eea;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .timeline-date {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .timeline-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-content li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .timeline-content li:before {
-            content: "▶";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .contact-item {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ffd700;
-        }
-
-        .contact-item h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text {
-                text-align: center;
-            }
-
-            .hero-stats {
-                text-align: center;
-            }
-
-            .profile-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .section {
-                margin: 20px 0;
-                padding: 40px 0;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Scroll animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-
-        .scroll-animate.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">Chiamaka Okakpu</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Data Analyst</h1>
-                    <p>Transforming raw data into actionable insights through advanced analytics, visualization, and strategic reporting. Passionate about driving data-driven decision making.</p>
-                    <a href="#contact" class="cta-button">Get In Touch <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div>
-                    <img src="meni.jpg" alt="Chiamaka Okakpu" class="profile-image">
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div>Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">1+</div>
-                        <div>Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">4+</div>
-                        <div>Certifications</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-     <!-- About Section -->
-    <section id="about" class="section scroll-animate">
-        <div class="container">
-            <h2>About Me</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 1.8;">
-                <p style="margin-bottom: 2rem;">
-                    I am a passionate Data Analyst with a unique blend of technical expertise and real-world business experience. My journey in data analytics is strengthened by nearly four years of hands-on retail management, where I developed a deep understanding of business processes, customer behavior, and operational efficiency.
-                </p>
-                <p style="margin-bottom: 2rem;">
-                    During my tenure as a Retail Manager at Krispy Kreme, I honed my skills in cash reconciliation, daily sales analysis, and inventory control - experiences that gave me practical insights into how data drives business decisions. This foundation, combined with my formal training in data analytics, allows me to bridge the gap between raw data and actionable business intelligence.
-                </p>
-                <p style="margin-bottom: 2rem;">
-                    I thrive on transforming complex datasets into clear, compelling stories that drive strategic decision-making and operational improvements.
-                </p>
-            </div>
-        </div>
-    </section>
+  <!-- Home Section -->
+  <section id="home" class="section home">
+    <h1>Chiamaka Ruth Okakpu</h1>
+    <p>Data Entry Specialist & Analyst</p>
+    <div class="btn-group">
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section scroll-animate">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
-                    <h3>Data Visualization</h3>
-                    <ul class="skill-list">
-                        <li>Power BI</li>
-                        <li>Excel</li>
-                        <li>Matplotlib</li>
-                        <li>Seaborn</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="skill-icon"><i class="fab fa-python"></i></div>
-                    <h3>Programming</h3>
-                    <ul class="skill-list">
-                        <li>Python (Pandas, Numpy)</li>
-                        <li>SQL</li>
-                        <li>Data Querying</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="skill-icon"><i class="fas fa-search"></i></div>
-                    <h3>SEO & Analytics</h3>
-                    <ul class="skill-list">
-                        <li>SEO Analysis</li>
-                        <li>Keyword Analysis</li>
-                        <li>Web Traffic Analysis</li>
-                        <li>Performance Optimization</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3>Data Management</h3>
-                    <ul class="skill-list">
-                        <li>Data Cleaning</li>
-                        <li>Data Transformation</li>
-                        <li>Data Analysis</li>
-                        <li>Reporting</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About Me</h2>
+    <p> I am a data analyst and product analyst working with startups and growing businesses to turn messy data into decisions that actually move the needle.
+Before data, I spent years as a retail manager responsible for sales performance, inventory planning, and customer purchasing behavior. That experience matters more than most analytics certificates. I have lived inside operational problems, revenue pressure, and customer churn. Data wasn’t abstract to me. It was survival.
+Today, I apply that business-first mindset to early-stage and scaling products. I have worked as a founding data analyst for a digital menu product in the restaurant space, supported growth and engagement analysis for a subscription-sharing platform, and delivered analytical projects across product, marketing, and operations.
+I am especially interested in product analytics, user behavior, growth metrics, and operational insights for startups and SMEs that need clarity, not complexity.
+If you are building something and your data feels noisy, underused, or ignored, that’s where I do my best work.</p>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section scroll-animate">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>MenuCard Project</h3>
-                        <div class="project-date">Feb 2025 - Present</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Assisted in building a comprehensive menu card system at HNG TECH, contributing to the development of usemenucard.com platform.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Web Development</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Team Collaboration</span>
-                        </div>
-                        <a href="https://www.usemenucard.com" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Exploratory Data Analysis On Netflix Movies</h3>
-                        <div class="project-date">Mar 2024 - Jun 2024</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Comprehensive data analysis project completed as part of Data Analyst in Python course, demonstrating advanced analytical techniques.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Data Visualization</span>
-                        </div>
-                        <a href="https://www.datacamp.com/datalab/w/db424350-20f2-4f12-ac22-98acde3c1abc/edit" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Visualizing the History of Nobel Prize Winners</h3>
-                        <div class="project-date">Mar 2024 - Jun 2024</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Advanced data analysis project showcasing statistical analysis and data-driven insights using Python programming.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Statistical Analysis</span>
-                            <span class="tech-tag">Data Science</span>
-                        </div>
-                        <a href="https://www.datacamp.com/datalab/w/a284a339-4588-47e5-a0f2-765f1f8624a9/edit" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Marketing Campaign EDA</h3>
-                        <div class="project-date">Jan 2025 - Feb 2025</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Conducted comprehensive exploratory data analysis on marketing campaign data to uncover trends, outliers, and insights that refined marketing strategies.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Matplotlib</span>
-                            <span class="tech-tag">Seaborn</span>
-                            <span class="tech-tag">EDA</span>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1k7kRH7pUrRTKqtllHr19wIyE6dkevXnC?usp=sharing" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>SQL Based Marketing Analysis</h3>
-                        <div class="project-date">Feb 2025 - Mar 2025</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Utilized SQL to extract valuable insights from marketing datasets, optimizing campaign strategies and analyzing key performance indicators.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Data Mining</span>
-                            <span class="tech-tag">KPI Analysis</span>
-                            <span class="tech-tag">ROI Analysis</span>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1ZJ0a17mDQRPzTUtVgmKCtU9HvR6P3VeX?usp=sharing" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Data Cleaning & SEO Optimization</h3>
-                        <div class="project-date">Mar 2025 - April 2025</div>
-                    </div>
-                    <div class="project-content">
-                        <p>Automated data cleaning tasks using Python and enhanced SEO performance through optimized product descriptions and titles.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">SEO</span>
-                            <span class="tech-tag">Automation</span>
-                            <span class="tech-tag">Data Cleaning</span>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1BEVCc84D1AV7zM5HUgcBVpkBXAsRsSzK?usp=sharing" class="project-link" target="_blank">
-                            View Project <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section scroll-animate">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-title">Data Analyst Intern - HNG Internship</div>
-                        <div class="timeline-date">Jan 2025 - April 2025</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Collaborated with cross-functional teams including product and marketing to understand data needs and provide tailored analysis</li>
-                            <li>Cleaned and structured large datasets, ensuring accuracy and reducing errors in data processing</li>
-                            <li>Analyzed marketing campaign data to optimize strategies and improve conversion rates</li>
-                            <li>Created comprehensive reports, dashboards and visualizations to communicate findings effectively</li>
-                            <li>Conducted SEO analysis to enhance website visibility leading to measurable increase in web traffic</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-title">Retail Manager - Krispy Kreme</div>
-                        <div class="timeline-date">Sep 2021 - May 2025</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Conducted daily cash reconciliation, ensuring 99.8% accuracy in daily transactions</li>
-                            <li>Analyzed product sales data and customer purchasing patterns to optimize inventory levels and reduce waste by 15%</li>
-                            <li>Implemented inventory control systems and tracking procedures, improving stock management efficiency</li>
-                            <li>Generated comprehensive daily, weekly, and monthly sales reports for management decision-making</li>
-                            <li>Identified trends in customer behavior and product performance through data analysis, contributing to strategic planning</li>
-                            <li>Managed point-of-sale systems and maintained accurate records of all transactions and inventory movements</li>
-                            <li>Collaborated with management team to develop data-driven recommendations for operational improvements</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <h2>Education & Certifications</h2>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-title">HND Computer Science - Yaba College of Technology</div>
-                        <div class="timeline-date">2023 - Present</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-title">Professional Certifications</div>
-                        <div class="timeline-date">2024</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Data Analytics Essentials - Cisco Networking Academy</li>
-                            <li>Data Analyst in Python - DataCamp</li>
-                            <li>Ask Questions to Make Data-Driven Decisions - Coursera</li>
-                            <li>Foundations: Data, Data Everywhere - Coursera</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Volunteer Experience Section -->
-    <section id="volunteer" class="section scroll-animate">
-        <div class="container">
-            <h2>Volunteer Experience</h2>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div class="timeline-title">Volunteer Data Analyst - HNG Tech Community</div>
-                        <div class="timeline-date">Jan 2025 - Present</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Actively gather and collect data from multiple sources to support community initiatives and projects</li>
-                            <li>Develop data-driven recommendations to improve community engagement and program effectiveness</li>
-                            <li>Identify trends and patterns in community data to inform strategic decision-making</li>
-                            <li>Collaborate with other volunteers and mentors to analyze project performance metrics</li>
-                            <li>Create insightful reports and visualizations to communicate findings to stakeholders</li>
-                            <li>Contribute to data standardization efforts and best practices documentation</li>
-                            <li>Support fellow community members with data analysis guidance and mentorship</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Skills Section -->
+  <section id="skills" class="section skills">
+    <h2>Product & Growth Analytics</h2>
+    <ul class="skill-list">
+      <li>User acquisition, retention, and engagement analysis</li>
+      <li>Feature adoption and usage insights</li>
+      <li>Landing page and campaign performance analysis</li>
+    </ul>
+      <h2>Business & Operational Analytics</h2>
+    <ul class="skill-list">
+      <li>Sales and revenue analysis</li>
+      <li>Inventory and demand insights</li>
+      <li>Customer behavior and segmentation</li>
+      <li>KPI definition and performance tracking</li>
+    </ul>
+      <h2>Data Analysis & Modeling</h2>
+    <ul class="skill-list">
+      <li>Exploratory data analysis (EDA)</li>
+      <li>Regression and classification models</li>
+      <li>Data cleaning, transformation, and validation</li>
+    </ul>
+      <h2>Data Visualization & Reporting</h2>
+    <ul class="skill-list">
+      <li>Executive dashboards for founders and stakeholders</li>
+      <li>Insight-focused reporting</li>
+      <li>Translating analysis into clear recommendations</li>
+    </ul>
+  </section>
     
-    <!-- Contact Section -->
-    <section id="contact" class="section scroll-animate">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <h3>Email</h3>
-                    <p><a href="mailto:chiamakaokakpu36@gmail.com">chiamakaokakpu36@gmail.com</a></p>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <h3>Phone</h3>
-                    <p><a href="tel:+2347061734987">+234 07061734987</a></p>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3>Location</h3>
-                    <p>Lagos, Nigeria</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Tools Section -->
+  <section id="tools" class="section tools">
+    <ul class="tool-list">
+      <li>Python (Pandas, Numpy, scikit-learn)</li>
+      <li>SQL</li>
+      <li>Power BI</li>
+      <li>Microsoft Excel</li>
+      <li>Google Analytics</li>
+    </ul>
+  </section>
+    
+  <!-- Experience Section -->
+  <section id="experience" class="section experience">
+    <h2>Professional Experience</h2>
+    <div class="job">
+      <h3>Data Analyst</h3>
+      <p><strong>Freelance (Remote)</strong> — January 2026 – Present</p>
+      <ul>
+        <li>Analyzed user acquisition channels, traffic sources, and engagement sessions to understand growth drivers.</li>
+        <li>Evaluated landing page performance to identify conversion bottlenecks.</li>
+        <li>Delivered actionable insights on user behavior to support product and marketing decisions.</li>
+      </ul>
+    </div>
+      <h3>Data Analyst Intern</h3>
+      <p><strong>Codveda Technologies (Remote)</strong> | July 2025 – August 2025</p>
+      <ul>
+        <li>Built regression and classification models for predictive analysis.</li>
+        <li>Conducted end-to-end data processing, feature selection, and model evaluation.</li>
+        <li>Strengthened applied understanding of machine learning in business contexts.</li>
+      </ul>
+      <h3>Data Analysis Intern</h3>
+      <p><strong>HNG Tech (Remote)</strong> — January 2025 – March 2025</p>
+      <ul>
+        <li>Worked on multiple real-world analytics projects across different domains.</li>
+        <li>Performed data cleaning, exploratory analysis, and visualization for stakeholder use.</li>
+        <li>Collaborated in cross-functional teams under tight timelines, simulating startup delivery environments.</li>
+      </ul>
+    </div>
+      <h3>Retail Manager</h3>
+      <p><strong>Krispy Kreme </strong> | September 2021 – May 2025</p>
+      <ul>
+        <li>Analyzed sales trends, inventory movement, and customer purchasing behavior.</li>
+        <li>Used data insights to support stock planning and sales performance improvements.</li>
+        <li>Developed a strong operational understanding that now informs my analytical approach.</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Chiamaka Okakpu. All rights reserved. | Crafted with passion for data analytics </br></br></p>
-        </div>
-    </footer>
+  <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <h2>Featured Projects</h2>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <div class="project">
+      <h3>USEMENUCARD – DIGITAL MENU PLATFORM </h3>
+      <p>Contributed in shaping a data-driven product launch strategy for UseMenuCard, a digital menu platform during my internship at HNG.This project involved data processing, menu management, and ensuring data accuracy for restaurant partners</p>
+      <a href="#" class="https://www.usemenucard.com">View Website</a>
+    </div>
 
-        // Header background change on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(102, 126, 234, 0.95)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-        });
+     <div class="project">
+      <h3>NIGERIAN BANKING SEO ANALYSIS </h3>
+      <p>Built a Power BI dashboard that transforms raw SEO metrics into strategic for product and growth teams. By aligning search visibility, user intent signals and ranking trends, the analysis helps identify high-impact content opportunities and performance gaps within the Nigerian banking landscape.</p>
+      <a href="#" class="https://app.powerbi.com/view?r=eyJrIjoiZTQ3YzgwNTgtNjgxNi00NTEyLWEzMmUtMGRmNzk0NjVhMDg5IiwidCI6IjM5MTM5MTFjLWQ3NjUtNDg2Ny04Zjk5LTI3MzRlMWIyMDhlZSJ9">View Dashboard</a>
+    </div>
+     <div class="project">
+      <h3>HOTEL PERFORMANCE ANALYSIS </h3>
+      <p>Generated actionable insights from hotel performance data to understand what truly drives revenue and profit. The analysis exposed how pricing, customer segments, and seasonality influence outcomes, helping stakeholders focus on margin optimization rather than volume growth alone. </p>
+      <a href="#" class="https://app.powerbi.com/view?r=eyJrIjoiMzRjODc2YjQtMjIyNC00NTIxLWE1ODUtNzNjYzA5NDE2YmQxIiwidCI6IjM5MTM5MTFjLWQ3NjUtNDg2Ny04Zjk5LTI3MzRlMWIyMDhlZSJ9">View Dashboard</a>
+    </div> 
+  </section>
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <!-- Certifications Section -->
+  <section id="certifications" class="section certs">
+    <h2>Certifications & Training</h2>
+    <ul>
+      <li>Certification 1</li>
+      <li>Certification 2</li>
+      <!-- Add more certifications -->
+    </ul>
+  </section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Get In Touch</h2>
+    <p>Send me a message:</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
 
-        document.querySelectorAll('.scroll-animate').forEach(el => {
-            observer.observe(el);
-        });
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
 
-        // Mobile menu toggle (basic functionality)
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Add typing effect to hero title
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero h1');
-            const originalText = heroTitle.textContent;
-            typeWriter(heroTitle, originalText, 150);
-        });
-
-        // Add particle effect to background
-        function createParticles() {
-            const hero = document.querySelector('.hero');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 2px;
-                    height: 2px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    animation: float ${Math.random() * 3 + 2}s infinite ease-in-out;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 2}s;
-                `;
-                hero.appendChild(particle);
-            }
-        }
-
-        // Add floating animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
-                50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize particles
-        createParticles();
-
-        // Add hover effects to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add counter animation for stats
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start) + '+';
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target + '+';
-                }
-            }
-            updateCounter();
-        }
-
-        // Initialize counter animations when stats come into view
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    const targetValue = parseInt(number.textContent);
-                    animateCounter(number, targetValue);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.stat-item').forEach(stat => {
-            statsObserver.observe(stat);
-        });
-
-        // Add progress bar for page scroll
-        function updateScrollProgress() {
-            const scrolled = window.pageYOffset;
-            const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrolled / maxHeight) * 100;
-            
-            let progressBar = document.querySelector('.scroll-progress');
-            if (!progressBar) {
-                progressBar = document.createElement('div');
-                progressBar.className = 'scroll-progress';
-                progressBar.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 0%;
-                    height: 3px;
-                    background: linear-gradient(45deg, #ff6b6b, #ffd700);
-                    z-index: 9999;
-                    transition: width 0.1s ease;
-                `;
-                document.body.appendChild(progressBar);
-            }
-            
-            progressBar.style.width = progress + '%';
-        }
-
-        window.addEventListener('scroll', updateScrollProgress);
-
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Enhanced mobile menu functionality
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        let isMenuOpen = false;
-
-        mobileMenu.addEventListener('click', function() {
-            isMenuOpen = !isMenuOpen;
-            
-            if (isMenuOpen) {
-                navLinks.style.cssText = `
-                    display: flex;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    background: rgba(102, 126, 234, 0.95);
-                    flex-direction: column;
-                    padding: 1rem 0;
-                    backdrop-filter: blur(10px);
-                    border-radius: 0 0 10px 10px;
-                `;
-                this.innerHTML = '<i class="fas fa-times"></i>';
-            } else {
-                navLinks.style.display = 'none';
-                this.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                    mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-                    isMenuOpen = false;
-                }
-            });
-        });
-
-        // Add skill bar animations
-        function animateSkillBars() {
-            const skillCategories = document.querySelectorAll('.skill-category');
-            skillCategories.forEach((category, index) => {
-                category.style.animationDelay = `${index * 0.2}s`;
-                category.classList.add('skill-animate');
-            });
-        }
-
-        // Add skill animation styles
-        const skillStyle = document.createElement('style');
-        skillStyle.textContent = `
-            .skill-animate {
-                animation: slideInUp 0.6s ease forwards;
-            }
-            
-            @keyframes slideInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(50px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(skillStyle);
-
-        // Initialize skill animations when skills section is visible
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                    skillsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        const skillsSection = document.querySelector('#skills');
-        if (skillsSection) {
-            skillsObserver.observe(skillsSection);
-        }
-    </script>
 </body>
 </html>
